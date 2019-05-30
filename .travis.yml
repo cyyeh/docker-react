@@ -9,7 +9,7 @@ before_install:
 
 # tell Travis how to run our test suite
 script:
-  - docker run cyyeh/docker-react npm run test -- --coverage
+  - docker run -e CI=true cyyeh/docker-react npm run test -- --coverage
 
 # tell Travis how to deploy our code to AWS
 deploy:
