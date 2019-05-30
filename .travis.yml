@@ -1,0 +1,15 @@
+# tell Travis we need a copy of docker running
+sudo: required
+services:
+  - docker
+
+# build our image using Dockerfile.dev
+before_install:
+  - docker build -t cyyeh/docker-react -f Dockerfile.dev .
+
+# tell Travis how to run our test suite
+script:
+  - docker run cyyeh/docker-react npm run test -- --coverage
+
+# tell Travis how to deploy our code to AWS
+
