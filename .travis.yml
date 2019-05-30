@@ -12,4 +12,15 @@ script:
   - docker run cyyeh/docker-react npm run test -- --coverage
 
 # tell Travis how to deploy our code to AWS
-
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-802728717882"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
